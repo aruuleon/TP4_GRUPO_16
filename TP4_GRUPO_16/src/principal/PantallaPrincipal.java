@@ -1,6 +1,6 @@
 package principal;
 
-public class PantallaPrincipal {
+public class PantallaPrincipalEjercicio1 {
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
@@ -8,7 +8,7 @@ public class PantallaPrincipal {
                 SeleccionMultiple seleccionMultiple = new SeleccionMultiple();
                 seleccionMultiple.setVisible(true);
             } catch (Exception e) {
-                e.printStackTrace();
+                e.printStackTrace();// ejercicio 1
             }
         }
 	}
