@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -14,29 +15,36 @@ import java.awt.event.ActionListener;
 
 public class VentanaEjercicio1 extends  JFrame {
 	
-    /**
-	 * 
-	 */
+    
 	private static final long serialVersionUID = 1L;
 	
     private JTextField TextNombre;
     private JTextField TextApellido;
     private JTextField TextTelefono;
     private JTextField TextFechaNacimiento;
+    
+    private JLabel resultadoNombreLbl;
+    private JLabel resultadoApellidoLbl;
+    private JLabel resultadoTelefonoLbl;
+    private JLabel resultadoFechaNacLbl;
     private JPanel contentPane;
-	
-	
-	
+    
+   
 		
 		public VentanaEjercicio1() {
 	        setTitle("Contactos");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setBounds(100, 100, 350, 250);
+	        setBounds(100, 100, 350, 350);
 	        contentPane = new JPanel();
-	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setContentPane(contentPane);
-	        contentPane.setLayout(new GridLayout(6, 2, 5, 5));
+	        contentPane.setLayout(new GridLayout(12, 10, 20, 10));
+	        
+	        //METODO PARA CERRAR SOLO LA VENTANA DEL EJERCICIO1
+	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+	       
+	      
 	        // etiquetas y campos de texto
 	        JLabel nombreLbl = new JLabel("Nombre:");
 	        contentPane.add(nombreLbl);
@@ -62,39 +70,173 @@ public class VentanaEjercicio1 extends  JFrame {
 	        contentPane.add(TextFechaNacimiento);
 	        TextFechaNacimiento.setColumns(10);
 
+	        //para mostrar informacion segunda parte del punto 1
 	        
+	        resultadoNombreLbl = new JLabel("");
+	        resultadoNombreLbl.setForeground(Color.BLUE);
+	        contentPane.add(resultadoNombreLbl);
+	        contentPane.add(new JLabel("")); 
+	     
+	        resultadoApellidoLbl = new JLabel("");
+	        resultadoApellidoLbl.setForeground(Color.BLUE);
+	        contentPane.add(resultadoApellidoLbl);
+	        contentPane.add(new JLabel("")); 
+	     
+	        resultadoTelefonoLbl = new JLabel("");
+	        resultadoTelefonoLbl.setForeground(Color.BLUE);
+	        contentPane.add(resultadoTelefonoLbl);
+	        contentPane.add(new JLabel(" "));
+	     
+	        resultadoFechaNacLbl = new JLabel("");
+	        resultadoFechaNacLbl.setForeground(Color.BLUE);
+	        contentPane.add(resultadoFechaNacLbl);
+	        contentPane.add(new JLabel(" "));
+	     
 	        
-	        // botón "Mostrar" y su AccionListener
-	        JButton mostrar = new JButton("Mostrar");
-	        mostrar.addActionListener(new ActionListener() {
-	        	
-	        	
-	        	
-	        	
-	            public void actionPerformed(ActionEvent e) {
-	                String nombre = TextNombre.getText();
-	                String apellido = TextApellido.getText();
-	                String telefono = TextTelefono.getText();
-	                String fechaNacimiento = TextFechaNacimiento.getText();
-
-	                // Validar que todos los campos estén completos
-	                if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || fechaNacimiento.isEmpty()) {
-	                    // Cambia rojo los campos incompletos
-	                    if (nombre.isEmpty()) TextNombre.setBackground(Color.RED); else TextNombre.setBackground(Color.WHITE);
-	                    if (apellido.isEmpty()) TextApellido.setBackground(Color.RED); else TextApellido.setBackground(Color.WHITE);
-	                    if (telefono.isEmpty()) TextTelefono.setBackground(Color.RED); else TextTelefono.setBackground(Color.WHITE);
-	                    if (fechaNacimiento.isEmpty()) TextFechaNacimiento.setBackground(Color.RED); else TextFechaNacimiento.setBackground(Color.WHITE);
-	                 
-	                } else {
-	                 
-	                }
-	            }
-	            
-	            
-	            
-	            
-	        });
+	        // Asignamos la clase que maneja el botón
+	        JButton mostrar = new JButton ("Mostrar");
+	        mostrar.addActionListener(new EventoBotonMostrar(TextNombre, TextApellido, TextTelefono, TextFechaNacimiento, resultadoNombreLbl,resultadoApellidoLbl,resultadoTelefonoLbl,resultadoFechaNacLbl));
+	        
+	       
+	        
 	        contentPane.add(mostrar);
+	       
 		}
 		
 }
+
+
+
+class EventoBotonMostrar implements ActionListener
+{
+	private JTextField nombre;
+	private JTextField apellido;
+	private JTextField telefono;
+	private JTextField fechaNac;
+	private JLabel resultadoNombreLbl;
+	private JLabel resultadoApellidoLbl;
+	private JLabel resultadoTelefonoLbl;
+	private JLabel resultadoFechaNacLbl;
+
+	    
+	    public EventoBotonMostrar()
+		{
+			
+		}
+	    
+	    public EventoBotonMostrar(JTextField nombre, JTextField apellido, JTextField telefono, JTextField fechaNac,
+                JLabel resultadoNombre, JLabel resultadoApellido, JLabel resultadoTelefono, JLabel resultadoFechaNac) {
+	    	
+	    	this.nombre = nombre;
+	    	this.apellido = apellido;
+	    	this.telefono = telefono;
+	    	this.fechaNac = fechaNac;
+	    	this.resultadoNombreLbl = resultadoNombre;
+	    	this.resultadoApellidoLbl = resultadoApellido;
+	    	this.resultadoTelefonoLbl = resultadoTelefono;
+	    	this.resultadoFechaNacLbl = resultadoFechaNac;
+	    }
+
+	
+	
+	public JTextField getNombre() {
+			return nombre;
+		}
+
+		public void setNombre(JTextField nombre) {
+			this.nombre = nombre;
+		}
+
+		public JTextField getApellido() {
+			return apellido;
+		}
+
+		public void setApellido(JTextField apellido) {
+			this.apellido = apellido;
+		}
+
+		public JTextField getTelefono() {
+			return telefono;
+		}
+
+		public void setTelefono(JTextField telefono) {
+			this.telefono = telefono;
+		}
+
+		public JTextField getFechaNac() {
+			return fechaNac;
+		}
+
+		public void setFechaNac(JTextField fechaNac) {
+			this.fechaNac = fechaNac;
+		}
+
+		
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		 	String nom = nombre.getText();
+		    String ape = apellido.getText();
+		    String tel = telefono.getText();
+		    String fecha = fechaNac.getText();
+
+		    boolean camposCompletos = true;
+
+		    if (nom.isEmpty()) {
+		        nombre.setBackground(Color.RED);
+		        camposCompletos = false;
+		    } else nombre.setBackground(Color.WHITE);
+
+		    if (ape.isEmpty()) {
+		        apellido.setBackground(Color.RED);
+		        camposCompletos = false;
+		    } else apellido.setBackground(Color.WHITE);
+
+		    if (tel.isEmpty()) {
+		        telefono.setBackground(Color.RED);
+		        camposCompletos = false;
+		    } else telefono.setBackground(Color.WHITE);
+
+		    if (fecha.isEmpty()) {
+		        fechaNac.setBackground(Color.RED);
+		        camposCompletos = false;
+		    } else fechaNac.setBackground(Color.WHITE);
+
+		    if (camposCompletos) {
+		        resultadoNombreLbl.setText("Nombre: " + nom);
+		        resultadoApellidoLbl.setText("Apellido: " + ape);
+		        resultadoTelefonoLbl.setText("Teléfono: " + tel);
+		        resultadoFechaNacLbl.setText("Fecha Nacimiento: " + fecha);
+		        
+		        nombre.setText("");
+		        apellido.setText("");
+		        telefono.setText("");
+		        fechaNac.setText("");
+
+		        // Restaurar cajas de texto al mostrar en las lbl
+		        nombre.setBackground(Color.WHITE);
+		        apellido.setBackground(Color.WHITE);
+		        telefono.setBackground(Color.WHITE);
+		        fechaNac.setBackground(Color.WHITE);
+		        
+		        
+		        
+		    } 
+		
+		
+}
+	
+
+
+}
+
+ 
+
+
+
+
+
+
+
+
