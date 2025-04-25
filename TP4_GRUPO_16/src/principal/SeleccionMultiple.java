@@ -19,7 +19,7 @@ public class SeleccionMultiple extends JFrame {
 
     public SeleccionMultiple() {
         setTitle("Seleccion multiple");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 300);
         setLocationRelativeTo(null);
         setResizable(false);
