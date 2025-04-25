@@ -2,6 +2,8 @@ package principal;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SeleccionMultiple extends JFrame {
   
@@ -41,6 +43,9 @@ public class SeleccionMultiple extends JFrame {
         JButton btnAceptar = new JButton("Aceptar");
         btnAceptar.setBounds(340, 205, 100, 30);
         getContentPane().add(btnAceptar);
+        btnAceptar.addActionListener(new EventoBotonAceptar(
+        	    firstRadioButton, secondRadioButton, thirdRadioButton,
+        	    firstCheckBox, secondCheckBox, thirdCheckBox, textFieldHours));
     }
 
     private JPanel crearFirstPanel() {
@@ -70,9 +75,9 @@ public class SeleccionMultiple extends JFrame {
         label.setBounds(10, 36, 200, 14);
         panel.add(label);
 
-        firstCheckBox = crearCheck("Programación", 308, 2, panel);
-        secondCheckBox = crearCheck("Administración", 308, 33, panel);
-        thirdCheckBox = crearCheck("Diseño Gráfico", 308, 63, panel);
+        firstCheckBox = crearCheck("Programaciï¿½n", 308, 2, panel);
+        secondCheckBox = crearCheck("Administraciï¿½n", 308, 33, panel);
+        thirdCheckBox = crearCheck("Diseï¿½o Grï¿½fico", 308, 63, panel);
 
         return panel;
     }
@@ -91,5 +96,88 @@ public class SeleccionMultiple extends JFrame {
         panel.add(check);
         return check;
     }
+ 
+    public class EventoBotonAceptar implements ActionListener {
+        
+    	private JTextField txtHoras;
+
+        private JRadioButton rbWindows;
+        private JRadioButton rbMac;
+        private JRadioButton rbLinux;
+
+        private JCheckBox cbProgramacion;
+        private JCheckBox cbAdmistracion;
+        private JCheckBox cbDisGrafico;
+
+        public EventoBotonAceptar(JRadioButton windows, JRadioButton mac, JRadioButton linux,
+                                  JCheckBox programacion, JCheckBox administracion, JCheckBox disGrafico, JTextField horas) {
+            this.txtHoras = horas;
+        	
+        	this.rbWindows = windows;
+            this.rbMac = mac;
+            this.rbLinux = linux;
+
+            this.cbProgramacion = programacion;
+            this.cbAdmistracion = administracion;
+            this.cbDisGrafico = disGrafico;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String sistemaOp = "";
+            if (rbWindows.isSelected())
+            	sistemaOp = "Windows";
+            else if (rbMac.isSelected())
+            	sistemaOp = "Mac";
+            else if (rbLinux.isSelected()) 
+            	sistemaOp = "Linux";
+            
+            String especialidades = "";
+            if (cbProgramacion.isSelected()) 
+            	especialidades += " - ProgramaciÃ³n";
+            if (cbAdmistracion.isSelected()) 
+            	especialidades += " - AdministraciÃ³n";
+            if (cbDisGrafico.isSelected()) 
+            	especialidades += " - DiseÃ±o GrÃ¡fico";
+            
+            String horas = txtHoras.getText();
+           
+            String mensaje = sistemaOp  + especialidades + " - " + horas + " Hs";
+            mostrarVentanaInfo(mensaje);
+        }
+
+    	private void mostrarVentanaInfo(String mensaje) {
+    	    JFrame mensajeFrame = new JFrame("Mensaje");
+    	    mensajeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	    mensajeFrame.setSize(500, 250); 
+    	    mensajeFrame.setLocationRelativeTo(null);
+    	    mensajeFrame.setLayout(null);
+
+    	    JLabel label = new JLabel(mensaje, SwingConstants.CENTER);
+    	    label.setBounds(20, 40, 450, 50);
+    	    mensajeFrame.add(label);
+
+    	    JButton btnCerrar = new JButton("Aceptar");
+    	    btnCerrar.setBounds(200, 130, 100, 30);
+    	    btnCerrar.addActionListener(new EventoBotonCerrar(mensajeFrame));
+    	    mensajeFrame.add(btnCerrar);
+
+    	    mensajeFrame.setVisible(true);
+    	}
+    }
+    
+    public class EventoBotonCerrar implements ActionListener {
+        private JFrame ventana;
+
+        public EventoBotonCerrar(JFrame vent) {
+            this.ventana = vent;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ventana.setVisible(false);
+        }
+    }
     
 }
+
