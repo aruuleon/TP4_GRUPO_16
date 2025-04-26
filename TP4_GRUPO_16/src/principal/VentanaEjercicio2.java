@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -45,7 +47,7 @@ public class VentanaEjercicio2 extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaEjercicio2() {
-		setTitle("Promedio");
+		setTitle("Resumen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 559, 433);
 		contPanelCuerpo = new JPanel();
@@ -85,6 +87,9 @@ public class VentanaEjercicio2 extends JFrame {
 		JComboBox cBoxTps = new JComboBox();
 		cBoxTps.setBounds(160, 131, 140, 22);
 		panelNotasEstudiante.add(cBoxTps);
+		cBoxTps.addItem("TP 1");
+		cBoxTps.addItem("TP 2");
+		cBoxTps.addItem("TP 3");
 		
 		textFieldNota3 = new JTextField();
 		textFieldNota3.setColumns(10);
@@ -132,27 +137,55 @@ public class VentanaEjercicio2 extends JFrame {
 		btnNuevo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNuevo.setBounds(379, 190, 139, 61);
 		contPanelCuerpo.add(btnNuevo);
+		btnNuevo.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        textFieldNota1.setText("");
+		        textFieldNota2.setText("");
+		        textFieldNota3.setText("");
+		        textFieldPromedio.setText("");
+		        textFieldCondicion.setText("");
+		        textFieldCondicion.setForeground(Color.BLACK); 
+		        cBoxTps.setSelectedIndex(0); 
+		    }
+		});
 		
 		JButton btnSalir = new JButton("SALIR");
 		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSalir.setBounds(379, 262, 139, 61);
 		contPanelCuerpo.add(btnSalir);
+		btnSalir.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        System.exit(0);
+		    }
+		});
 		
 		JButton btnCalcular = new JButton("CALCULAR");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double nota1 = Double.parseDouble(textFieldNota1.getText());
-				double nota2 = Double.parseDouble(textFieldNota2.getText());
-				double nota3 = Double.parseDouble(textFieldNota3.getText());
-				
-				double resultado = (nota1 + nota2 + nota3) / 3;
-				
-				String promedio = String.valueOf(resultado);
-				
-				System.out.println(resultado);
-				
-				textFieldPromedio.setText(promedio); 
-				
+				try {
+					double nota1 = Double.parseDouble(textFieldNota1.getText());
+					double nota2 = Double.parseDouble(textFieldNota2.getText());
+					double nota3 = Double.parseDouble(textFieldNota3.getText());
+					
+					double resultado = (nota1 + nota2 + nota3) / 3;
+					
+					String promedio = String.valueOf(resultado);
+					textFieldPromedio.setText(promedio); 
+					
+					String condicion;
+					if(resultado < 6) {
+						condicion="Libre";
+					}else if(resultado >=6 && resultado < 8) {
+						condicion="Regular";
+					}else {
+						condicion="Promocionado";
+					}
+					
+					textFieldCondicion.setText(condicion);
+					
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Error: Ingresa números válidos en todas las notas.", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 18));
