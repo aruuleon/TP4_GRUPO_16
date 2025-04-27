@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaEjercicio2 extends JFrame {
+public class Promedio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contPanelCuerpo;
@@ -34,7 +34,7 @@ public class VentanaEjercicio2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEjercicio2 frame = new VentanaEjercicio2();
+					Promedio frame = new Promedio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class VentanaEjercicio2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaEjercicio2() {
+	public Promedio() {
 		setTitle("Resumen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 559, 433);
