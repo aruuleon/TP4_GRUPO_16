@@ -27,28 +27,9 @@ public class Promedio extends JFrame {
 	private JTextField textFieldNota2;
 	private JTextField textFieldNota1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Promedio frame = new Promedio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Promedio() {
 		setTitle("Resumen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 559, 433);
 		contPanelCuerpo = new JPanel();
 		contPanelCuerpo.setForeground(new Color(0, 0, 0));

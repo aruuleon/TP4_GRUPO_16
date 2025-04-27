@@ -33,15 +33,12 @@ public class Contactos extends  JFrame {
 		
 		public Contactos() {
 	        setTitle("Contactos");
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        setBounds(100, 100, 350, 350);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setContentPane(contentPane);
 	        contentPane.setLayout(new GridLayout(12, 10, 20, 10));
-	        
-	        //METODO PARA CERRAR SOLO LA VENTANA DEL EJERCICIO1
-	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	       
 	      
