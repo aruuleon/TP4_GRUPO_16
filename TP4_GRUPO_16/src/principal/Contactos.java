@@ -55,7 +55,7 @@ public class Contactos extends  JFrame {
 	        contentPane.add(TextApellido);
 	        TextApellido.setColumns(10);
 
-	        JLabel telefonoLbl = new JLabel("Teléfono:");
+	        JLabel telefonoLbl = new JLabel("TelÃ©fono:");
 	        contentPane.add(telefonoLbl);
 	        TextTelefono = new JTextField();
 	        contentPane.add(TextTelefono);
@@ -203,7 +203,7 @@ class EventoBotonMostrar implements ActionListener
 		    if (camposCompletos) {
 		        resultadoNombreLbl.setText("Nombre: " + nom);
 		        resultadoApellidoLbl.setText("Apellido: " + ape);
-		        resultadoTelefonoLbl.setText("Teléfono: " + tel);
+		        resultadoTelefonoLbl.setText("TelÃ©fono: " + tel);
 		        resultadoFechaNacLbl.setText("Fecha Nacimiento: " + fecha);
 		        
 		        nombre.setText("");

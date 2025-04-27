@@ -165,7 +165,7 @@ public class Promedio extends JFrame {
 					textFieldCondicion.setText(condicion);
 					
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Error: Ingresa n˙meros v·lidos en todas las notas.", "Datos inv·lidos", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Error: Ingresa n√∫meros v√°lidos en todas las notas.", "Datos inv√°lidos", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
