@@ -7,10 +7,6 @@ import javax.swing.JFrame;
 
 public class PantallaPrincipal extends JFrame {
 	
-	
-
-	
-
 
 	/**
 	 * 
@@ -20,27 +16,13 @@ public class PantallaPrincipal extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
             try {
-            	
-            	
-            	
-            	
-            	VentanaEjercicio1 frame = new VentanaEjercicio1() ;
+            	Contactos frame = new Contactos() ;
             	frame.setVisible(true);
-            	
-         
-               
-               
-               
-            } catch (Exception e) {
+            } 
+            catch (Exception e) {
                 e.printStackTrace();// ejercicio 1
             }
         });
 	}
-	
-	
-	
-	
-	
-	
 }
 
