@@ -8,8 +8,8 @@ public class PantallaPrincipal {
 		
 		EventQueue.invokeLater(() -> {
             try {
-                SeleccionMultiple seleccionMultiple = new SeleccionMultiple();
-                seleccionMultiple.setVisible(true);
+                Principal principal = new Principal();
+                principal.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
