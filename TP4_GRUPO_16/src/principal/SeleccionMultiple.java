@@ -75,9 +75,9 @@ public class SeleccionMultiple extends JFrame {
         label.setBounds(10, 36, 200, 14);
         panel.add(label);
 
-        firstCheckBox = crearCheck("Programaci�n", 308, 2, panel);
-        secondCheckBox = crearCheck("Administraci�n", 308, 33, panel);
-        thirdCheckBox = crearCheck("Dise�o Gr�fico", 308, 63, panel);
+        firstCheckBox = crearCheck("Programación", 308, 2, panel);
+        secondCheckBox = crearCheck("Administración", 308, 33, panel);
+        thirdCheckBox = crearCheck("Diseño Gráfico", 308, 63, panel);
 
         return panel;
     }
